@@ -3,6 +3,8 @@
 
 import os
 
+from dbdb.interface import DBDB
+
 def connect(dbname):
     try:
         f = open(dbname, 'r+b')
