@@ -5,6 +5,8 @@ import os
 
 from dbdb.interface import DBDB
 
+__all__ = ['DBDB', 'connect']
+
 def connect(dbname):
     try:
         f = open(dbname, 'r+b')

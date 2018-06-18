@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#from __future__ import print_function
 import sys
+import dbdb
 
 OK = 0
 BAD_ARGS = 1
@@ -36,3 +38,6 @@ def main(argv):
         print("Key not found", file=sys.stderr)
         return BAD_KEY
     return OK
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))

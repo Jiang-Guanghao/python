@@ -24,3 +24,25 @@ class BinaryTree(LogicalBase):
         else:
             new_node = BinaryNode.from_node(node, value_ref=value_ref)
         return self.node_ref_class(referent=new_node)
+
+class BinaryNodeRef(ValueRef):
+    def prepare_to_store(self, storage):
+        if self._referent:
+            self._referent.store_refs(storage)
+
+class BinaryNode(object):
+    def srote_refs(self, storage):
+        self.value_ref.store(storage)
+        self.left_ref.store(storage)
+        self.right_ref.store(storage)
+
+class BinaryNodeRef(ValueRef):
+    @staticmethod
+    def referent_to_string(referent):
+        return pickle.dumps({
+            'left': referent.left_ref.address,
+            'key': referent.key,
+            'value': referent.value_ref.address,
+            'right': referent.right_ref.address,
+            'length': referent.length,
+        })
