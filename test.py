@@ -1,6 +1,25 @@
 # /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import struct
+import os
+
+f = open('test.txt', 'wb')
+name = b'lily'
+age = 17
+sex = b'female'
+job = b'teacher'
+
+f.write(struct.pack('4si6s7s', name, age, sex, job))
+f.flush()
+f.close()
+
+f = open('test.txt', 'rb')
+print(struct.unpack('4si6s7s', f.read(21)))
+f.close()
+
+quit()
+
 def maxof2(a, b):
     if a > b:
         return a
